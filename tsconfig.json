@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+      "noImplicitAny": false,
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "outDir": "src/build",
+      "sourceMap": true,
+      "moduleResolution": "Node",
+      "esModuleInterop": true,
+      "module": "ES2020",
+      "allowSyntheticDefaultImports": true,
+      "resolveJsonModule": true
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["src/**/tests/**/*.ts"]
+}

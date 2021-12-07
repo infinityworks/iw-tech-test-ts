@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+      "noImplicitAny": false,
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "outDir": "src/build",
+      "sourceMap": true,
+      "moduleResolution": "Node",
+      "esModuleInterop": true,
+      "module": "commonjs",
+      "allowSyntheticDefaultImports": true,
+      "resolveJsonModule": true
+    },
+    "include": ["**/*.ts"]
+}
