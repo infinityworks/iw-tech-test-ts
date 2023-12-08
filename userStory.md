@@ -14,9 +14,64 @@ For the purposes of this implementation the ratings schemes shall be considered 
 
 # Return order
 FHRS ratings should be returned in order, as in this example
-<table><thead><tr><th>Rating</th><th>Percentage</th></tr></thead><tbody><tr><td>5</td><td>50%</td></tr><tr><td>4</td><td>0%</td></tr><tr><td>3</td><td>0%</td></tr><tr><td>2</td><td>0%</td></tr><tr><td>1</td><td>20%</td></tr><tr><td>Exempt</td><td>30%</td></tr></tbody></table>
+<table>
+    <thead>
+        <tr>
+            <th>Rating</th>
+            <th>Percentage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>5</td>
+            <td>50%</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>0%</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>0%</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>0%</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>20%</td>
+        </tr>
+        <tr>
+            <td>Exempt</td>
+            <td>30%</td>
+        </tr>
+    </tbody>
+</table>
+
 FHIS ratings should be returned in order, as in this example
-<table><thead><tr><th>Rating</th><th>Percentage</th></tr></thead><tbody><tr><td>Pass and Eat Safe</td><td>50%</td></tr><tr><td>Pass</td><td>15%</td></tr><tr><td>Improvement Required</td><td>35%</td></tr></tbody></table>
+<table>
+    <thead>
+        <tr>
+            <th>Rating</th>
+            <th>Percentage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Pass and Eat Safe</td>
+            <td>50%</td>
+        </tr>
+        <tr>
+            <td>Pass</td>
+            <td>15%</td>
+        </tr>
+        <tr>
+            <td>Improvement Required</td>
+            <td>35%</td>
+        </tr>
+    </tbody>
+</table>
 
 # Acceptance Criteria
 On selecting a local authority the rating values and percentage shall be displayed.
