@@ -1,15 +1,18 @@
 import type { Request, Response } from "express";
 import fetch from "node-fetch";
+import { AuthorityResponseData, EstablishmentsResponse } from "./types";
+// import { URLSearchParams } from "url";
+
+export const baseUrl = "http://api.ratings.food.gov.uk/";
+const requestParams = {
+  headers: {
+    Accept: "application/json",
+    "x-api-version": "2",
+  },
+};
 
 export const getAuthorities = async (req: Request, res: Response) => {
-  const requestParams = {
-    headers: {
-      Accept: "application/json",
-      "x-api-version": "2",
-    },
-  };
-
-  let authoritiesResponse = null;
+  let authoritiesResponse;
 
   try {
     authoritiesResponse = await fetch(
@@ -40,6 +43,27 @@ export const parseAuthorities = (
   });
 };
 
+export const aggregateRatings = (
+  input: EstablishmentsResponse
+): AuthorityResponseData => {
+  const agg = new Map<string, number>();
+  const ret: AuthorityResponseData = [];
+
+  for (let i = 0; i < input.establishments.length - 1; i++) {
+    const doc = input.establishments[i];
+    agg.set(doc.RatingValue, (agg.get(doc.RatingValue) || 0) + 1);
+  }
+
+  agg.forEach((value, key) =>
+    ret.push({
+      name: key,
+      value: Number(((value * 100) / input.meta.itemCount).toFixed(2)),
+    })
+  );
+
+  return ret;
+};
+
 export const getAuthority = async (req: Request, res: Response) => {
   const authorityId = parseInt(req.params.authorityId);
 
@@ -49,27 +73,18 @@ export const getAuthority = async (req: Request, res: Response) => {
       .json({ error: "No valid authority ID was specified" });
   }
 
-  // This is just sample data to demonstrate the contract of the API
-  const oneRatingsSample: { name: string; value: number }[] = [
-    { name: "5-star", value: 22.41 },
-    { name: "4-star", value: 43.13 },
-    { name: "3-star", value: 12.97 },
-    { name: "2-star", value: 1.54 },
-    { name: "1-star", value: 17.84 },
-    { name: "Exempt", value: 2.11 },
-  ];
+  let authoritiesResponse;
 
-  const anotherRatingsSample: { name: string; value: number }[] = [
-    { name: "5-star", value: 50 },
-    { name: "4-star", value: 0 },
-    { name: "3-star", value: 0 },
-    { name: "2-star", value: 0 },
-    { name: "1-star", value: 25 },
-    { name: "Exempt", value: 25 },
-  ];
+  try {
+    const url = new URL(baseUrl + "/Establishments");
+    url.searchParams.append("localAuthorityId", authorityId.toString());
 
-  const ratings =
-    authorityId % 2 === 1 ? oneRatingsSample : anotherRatingsSample;
+    authoritiesResponse = await fetch(url.href, requestParams);
+    const authoritiesJson = await authoritiesResponse.json();
 
-  return res.json(ratings);
+    return res.json(aggregateRatings(authoritiesJson));
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: "Unable to access FSA API" });
+  }
 };

@@ -1,0 +1,15 @@
+GET http://api.ratings.food.gov.uk/Authorities
+Accept: "application/json"
+x-api-version: 2
+
+###
+// FHIS
+GET http://api.ratings.food.gov.uk/establishments?localauthorityid=197
+Accept: "application/json"
+x-api-version: 2
+
+###
+// FHRS
+GET http://api.ratings.food.gov.uk/establishments?localauthorityid=252
+Accept: "application/json"
+x-api-version: 2
