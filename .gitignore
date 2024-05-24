@@ -6,7 +6,7 @@ coverage/
 node_modules/
 
 # production
-src/build
+build/
 
 # misc
 .DS_Store
