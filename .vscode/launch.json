@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run start",
+      "cwd": "${workspaceFolder}/src",
+      "serverReadyAction": {
+        "pattern": "Server listening on (http?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      }
+    },
+    {
+      "name": "Debug server-side",
+      "type": "node",
+      "request": "attach",
+      "port": 9230,
+    },
+  ],
+  "compounds": [
+    {
+      "name": "Debug",
+      "configurations": ["Run", "Debug server-side"]
+    },
+  ]
+}

@@ -12,8 +12,8 @@ const App = (ratingController: {
   async function run() {
     init();
     app.listen(DEFAULT_PORT, () => {
-      console.log(`Server listening on http://localhost:${DEFAULT_PORT} ...`);
       console.log("Both the website and the app API are served on this URL");
+      console.log(`Server listening on http://localhost:${DEFAULT_PORT}`);
     });
   }
 

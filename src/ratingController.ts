@@ -1,6 +1,8 @@
 import type { Request, Response } from "express";
 import fetch from "node-fetch";
 
+type Authority = { id: number; name: string };
+
 export const getAuthorities = async (req: Request, res: Response) => {
   const requestParams = {
     headers: {
@@ -19,7 +21,7 @@ export const getAuthorities = async (req: Request, res: Response) => {
 
     const authoritiesParsed = await authoritiesResponse.json();
 
-    const response: { id: number; name: string }[] =
+    const response: Authority[] =
       parseAuthorities(authoritiesParsed);
 
     return res.json(response);
@@ -31,7 +33,7 @@ export const getAuthorities = async (req: Request, res: Response) => {
 
 export const parseAuthorities = (
   authoritiesParsed: any
-): { id: number; name: string }[] => {
+): Authority[] => {
   return authoritiesParsed.authorities.map((json: { [key: string]: any }) => {
     return {
       id: json.LocalAuthorityId,
@@ -39,6 +41,8 @@ export const parseAuthorities = (
     };
   });
 };
+
+type AuthorityRatingResponse = { name: string; value: number }[];
 
 export const getAuthority = async (req: Request, res: Response) => {
   const authorityId = parseInt(req.params.authorityId);
@@ -50,7 +54,7 @@ export const getAuthority = async (req: Request, res: Response) => {
   }
 
   // This is just sample data to demonstrate the contract of the API
-  const oneRatingsSample: { name: string; value: number }[] = [
+  const oneRatingsSample: AuthorityRatingResponse = [
     { name: "5-star", value: 22.41 },
     { name: "4-star", value: 43.13 },
     { name: "3-star", value: 12.97 },
@@ -59,7 +63,7 @@ export const getAuthority = async (req: Request, res: Response) => {
     { name: "Exempt", value: 2.11 },
   ];
 
-  const anotherRatingsSample: { name: string; value: number }[] = [
+  const anotherRatingsSample: AuthorityRatingResponse = [
     { name: "5-star", value: 50 },
     { name: "4-star", value: 0 },
     { name: "3-star", value: 0 },

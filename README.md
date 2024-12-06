@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-- Node.js >=8
+- Node.js >=20
 - npm 
 - Access to the internet
 - Suitable development environment

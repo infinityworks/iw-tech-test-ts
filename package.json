@@ -9,7 +9,7 @@
     "tsc-watch": "tsc --watch",
     "app": "nodemon ./build/index.js",
     "start": "npm run tsc && concurrently \"npm run tsc-watch\" \"npm run app\"",
-    "test": "jest"  
+    "test": "jest"
   },
   "repository": {
     "type": "git",
