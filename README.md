@@ -1,4 +1,4 @@
-# Infinity Works - Full Stack Tech Test: TypeScript
+# Accenture Next Gen Engineering - Full Stack Tech Test: TypeScript
 
 ![Preview of Frontend](preview.png)
 

@@ -1,7 +1,7 @@
 {
   "name": "fsa-ratings",
   "version": "0.1.0",
-  "description": "FSA Ratings app for Infinity Works tech test",
+  "description": "FSA Ratings app for Accenture Next Gen Engineering tech test",
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/infinityworks/iw-tech-test-ts.git"
   },
-  "author": "Infinity Works Consulting",
+  "author": "Accenture Next Gen Engineering",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/infinityworks/iw-tech-test-ts/issues"
