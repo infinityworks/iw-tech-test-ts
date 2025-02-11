@@ -5,7 +5,6 @@
 ## Prerequisites
 
 - Node.js >=8
-- yarn
 - Access to the internet
 - Suitable development environment
 
@@ -14,7 +13,7 @@
 - Install dependencies: `npm install`
 - Run it: `npm run start`
 - Test it: `npm run test`
-- View it: http://localhost:8080 and http://localhost:8080/api
+- View it: http://localhost:8084 and http://localhost:8084/api
 - **Any imports will need to include the .js file extension**
 
 ## Submission
