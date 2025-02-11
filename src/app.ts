@@ -5,7 +5,7 @@ const App = (ratingController: {
   getAuthorities: (req: express.Request, res: express.Response) => void;
   getAuthority: (req: express.Request, res: express.Response) => void;
 }) => {
-  const DEFAULT_PORT = 8084;
+  const DEFAULT_PORT = 8080;
   const app: Application = express();
   init();
 
