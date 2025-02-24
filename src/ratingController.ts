@@ -1,5 +1,4 @@
 import type { Request, Response } from "express";
-import fetch from "node-fetch";
 
 export const getAuthorities = async (req: Request, res: Response) => {
   const requestParams = {
